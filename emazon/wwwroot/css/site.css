@@ -9,7 +9,6 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    font-family: 'Arial', sans-serif;
     overflow: hidden;
 }
 
@@ -80,9 +79,8 @@ body {
     }
 }
 
-.btn {
-    background-color: white;
-    color: white;
+.btn {  
+    color:white;
     border: none;
     padding: 15px 30px;
     font-size: 18px;
