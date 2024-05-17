@@ -81,7 +81,7 @@ body {
 }
 
 .btn {
-    background-color: #ff6347;
+    background-color: white;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -91,4 +91,4 @@ body {
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
-.btn:hover {background-color: #ff4500;}
+.btn:hover {color: white;}
