@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="emazon.Views.Home.Page">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+        <Window x:Class="AnimatedApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Animated Window" Height="450" Width="800" 
+        WindowStartupLocation="CenterScreen" Background="LightBlue">
+
+            <Window.Resources>
+                <!-- Define animations here -->
+                <Storyboard x:Key="ButtonHoverAnimation">
+                    <ColorAnimation To="DarkBlue" Duration="0:0:0.3" 
+                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" />
+                </Storyboard>
+                <Storyboard x:Key="ButtonLeaveAnimation">
+                    <ColorAnimation To="CornflowerBlue" Duration="0:0:0.3" 
+                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" />
+                </Storyboard>
+            </Window.Resources>
+
+            <Grid>
+                <!-- Add a title -->
+                <TextBlock Text="Welcome to the Animated App!" 
+                   FontSize="36" FontWeight="Bold" Foreground="White"
+                   HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
+
+                <!-- Add a button with animations -->
+                <Button Content="Click Me" Width="200" Height="50" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Background="CornflowerBlue" Foreground="White" FontSize="16" 
+                FontWeight="Bold" Cursor="Hand" BorderBrush="White" BorderThickness="2">
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard Storyboard="{StaticResource ButtonHoverAnimation}" />
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource ButtonLeaveAnimation}" />
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <!-- Add an animated rectangle -->
+                <Rectangle Width="100" Height="100" Fill="Red" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10">
+                    <Rectangle.Triggers>
+                        <EventTrigger RoutedEvent="Rectangle.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever" AutoReverse="True">
+                                    <DoubleAnimation Storyboard.TargetProperty="Width" From="100" To="200" Duration="0:0:2" />
+                                    <DoubleAnimation Storyboard.TargetProperty="Height" From="100" To="200" Duration="0:0:2" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
+                </Rectangle>
+            </Grid>
+        </Window>
+
+    </ContentPage.Content>
+</ContentPage>
