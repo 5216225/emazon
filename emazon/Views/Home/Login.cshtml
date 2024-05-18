@@ -1,43 +1,19 @@
-﻿@{
-    ViewData["Title"] = "Emazon - Login";
+﻿@model emazon.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <style>
-        .form-container {
-            max-width: 400px;
-            margin: 0 auto;
-        }        
-    </style>
-</head>
-<body>
-    <div class="container" style="margin-top:10%">
-        <div class="logo text-center">Emazon</div>
-        <div class="welcome-message text-center">Log In</div>
+<h2>Login</h2>
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
 
-        <div class="form-container">
-            <form>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter your username">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter your password">
-                </div>
-                <button type="submit" class="btn btn-primary btn-block" style="margin: 0 auto;">Login</button>
-            </form>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
-</html>
+<form asp-controller="Home" asp-action="Login" method="post">
+    <label>Email:</label>
+    <input type="email" name="Email" required />
+    <label>Password:</label>
+    <input type="password" name="Password" required />
+    <button type="submit">Login</button>
+</form>
