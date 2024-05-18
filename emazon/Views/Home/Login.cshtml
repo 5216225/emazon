@@ -1,19 +1,29 @@
 ﻿@model emazon.Models.LoginViewModel
+@{ViewBag.Title = "Login";}
 
-@{
-    ViewBag.Title = "Login";
-}
+<style>
+    .form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        margin-top: 10%;
+    }
+</style>
 
-<h2>Login</h2>
 @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
 {
     <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
 }
-
-<form asp-controller="Home" asp-action="Login" method="post">
-    <label>Email:</label>
-    <input type="email" name="Email" required />
-    <label>Password:</label>
-    <input type="password" name="Password" required />
-    <button type="submit">Login</button>
-</form>
+<div class="form-container">
+    <h2>Login</h2>
+    <form asp-controller="Home" asp-action="Login" method="post">
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" class="form-control" name="Email" required />
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" class="form-control" name="Password" required />
+        </div>
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+</div>

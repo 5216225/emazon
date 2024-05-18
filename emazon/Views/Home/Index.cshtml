@@ -1,5 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "Emazon - Welcome";
+    ViewData["Title"] = "Home Page";
+    bool isLoggedIn = ViewBag.IsLoggedIn ?? true;
 }
 
 <!DOCTYPE html>
@@ -27,12 +28,12 @@
             background-color: #007bff;
             color: white;
         }
+        /* Add this to your site.css or another CSS file */
+        .btn.disabled {
+            pointer-events: none;
+            opacity: 0.65;
+        }
 
-            .buttons .btn.disabled {
-                background-color: #6c757d;
-                pointer-events: none;
-                color: white;
-            }
     </style>
 </head>
 <body>
@@ -43,12 +44,24 @@
     <div class="container text-center" style="margin-top:10%">
         <div class="logo">Emazon</div>
         <div class="welcome-message">Welcome to Emazon - Your ultimate shopping destination!</div>
-        <div class="buttons">
-            <a href="#" class="btn" id="shop-now-btn">Shop Now</a>
-            <a href="#" class="btn" id="learn-more-btn">Learn More</a>
-            <a href="#" class="btn" id="special-offers-btn">Special Offers</a>
-            <a href="#" class="btn" id="profile-btn">Profile</a>
-        </div>
+        @if (isLoggedIn)
+        {
+            <div class="buttons">
+                <a href="#" class="btn" id="shop-now-btn">Shop Now</a>
+                <a href="#" class="btn" id="learn-more-btn">Learn More</a>
+                <a href="#" class="btn" id="special-offers-btn">Special Offers</a>
+                <a href="#" class="btn" id="profile-btn">Profile</a>
+            </div>
+        }
+        else
+        {
+            <div class="buttons">
+                <a href="#" class="btn btn-secondary disabled" id="shop-now-btn">Shop Now</a>
+                <a href="#" class="btn btn-secondary" id="learn-more-btn">Learn More</a>
+                <a href="#" class="btn btn-secondary disabled" id="special-offers-btn">Special Offers</a>
+                <a href="#" class="btn btn-secondary disabled" id="profile-btn">Profile</a>
+            </div>
+        }
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

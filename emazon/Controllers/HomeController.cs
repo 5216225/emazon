@@ -1,4 +1,3 @@
-using System;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using emazon.Models;
@@ -18,6 +17,12 @@ namespace emazon.Controllers
 
         public IActionResult Index()
         {
+            // Check if user is logged in
+            bool isLoggedIn = HttpContext.Session.GetString("IsLoggedIn") == "true";
+
+            // Pass isLoggedIn to the view
+            ViewBag.IsLoggedIn = isLoggedIn;
+
             return View();
         }
 
@@ -60,6 +65,9 @@ namespace emazon.Controllers
 
                         // Login successful
                         ViewBag.ErrorMessage = "Login is Successful.";
+
+                        // Set session value
+                        HttpContext.Session.SetString("IsLoggedIn", "true");
                         return View("Index");
                     }
                     else
@@ -74,6 +82,14 @@ namespace emazon.Controllers
                     return View("Index", model);
                 }
             }
+        }
+
+        public IActionResult Logout()
+        {
+            // Remove session value
+            HttpContext.Session.Remove("IsLoggedIn");
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult Register()
