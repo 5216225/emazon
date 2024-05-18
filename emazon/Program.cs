@@ -30,15 +30,13 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
-// Use session middleware
-app.UseSession();
 
 // Use authentication middleware
 app.UseAuthentication();
 app.UseAuthorization();
+// Use session middleware
+app.UseSession();
 
 // Map default controller route
 app.MapControllerRoute(

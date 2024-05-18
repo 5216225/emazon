@@ -1,20 +1,27 @@
 ﻿@model emazon.Models.LoginViewModel
 @{ViewBag.Title = "Login";}
 
-<style>
-    .form-container {
-        max-width: 400px;
-        margin: 0 auto;
-        margin-top: 10%;
-    }
-</style>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <style>
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 10%;
+        }
+    </style>
+</head>
 
 @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
 {
     <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
 }
 <div class="form-container">
-    <h2>Login</h2>
+    <div class="logo text-center">Welcome Back Emazonian</div>
+    <div class="welcome-message text-center">Login</div>
     <form asp-controller="Home" asp-action="Login" method="post">
         <div class="form-group">
             <label>Email:</label>
@@ -24,6 +31,8 @@
             <label>Password:</label>
             <input type="password" class="form-control" name="Password" required />
         </div>
-        <button class="btn btn-primary" type="submit">Login</button>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Login</button>
+        </div>
     </form>
 </div>

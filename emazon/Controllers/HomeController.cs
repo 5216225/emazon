@@ -97,6 +97,24 @@ namespace emazon.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Profile()
+        {
+            bool isLoggedIn = HttpContext.Session.GetString("IsLoggedIn") == "true";
+            if (!isLoggedIn)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var model = new LoginViewModel
+            {
+                email = HttpContext.Session.GetString("Email"),
+                // Add more user details as needed
+            };
+
+            return View(model);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

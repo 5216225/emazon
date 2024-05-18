@@ -47,19 +47,20 @@
         @if (isLoggedIn)
         {
             <div class="buttons">
-                <a href="#" class="btn" id="shop-now-btn">Shop Now</a>
-                <a href="#" class="btn" id="learn-more-btn">Learn More</a>
-                <a href="#" class="btn" id="special-offers-btn">Special Offers</a>
-                <a href="#" class="btn" id="profile-btn">Profile</a>
+                <a class="btn" id="shop-now-btn">Shop Now</a>
+                <a class="btn" id="learn-more-btn">Learn More</a>
+                <a class="btn" id="special-offers-btn">Special Offers</a>
+                <a class="btn" id="profile-btn" asp-area="" asp-controller="Home" asp-action="Profile">Profile</a>
+                <a class="btn" id="profile-btn" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
             </div>
         }
         else
         {
             <div class="buttons">
-                <a href="#" class="btn btn-secondary disabled" id="shop-now-btn">Shop Now</a>
+                <a class="btn btn-secondary disabled" id="shop-now-btn">Shop Now</a>
                 <a href="#" class="btn btn-secondary" id="learn-more-btn">Learn More</a>
-                <a href="#" class="btn btn-secondary disabled" id="special-offers-btn">Special Offers</a>
-                <a href="#" class="btn btn-secondary disabled" id="profile-btn">Profile</a>
+                <a class="btn btn-secondary disabled" id="special-offers-btn">Special Offers</a>
+                <a class="btn btn-secondary disabled" id="profile-btn">Profile</a>
             </div>
         }
     </div>
